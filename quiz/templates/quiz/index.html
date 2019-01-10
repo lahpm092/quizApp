@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <!-- {% if questions %}
+    <ul>
+    {% for question in questions %}
+        <li>{{ question.q }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No questions are available.</p>
+{% endif %} -->
+
+<form action="/quiz_page/" method="post">
+  {% csrf_token %}
+    <select name="selected_quiz">
+      {% for quiz in quizzes %}
+      <option>{{ quiz.topic }}</option>
+      {% endfor %}
+    </select>
+    <input type="number" name="no. of questions" min="1" max="100">
+    <input type="submit" value="OK">
+</form>
+
+  </body>
+</html>
