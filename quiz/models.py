@@ -1,23 +1,16 @@
 from django.db import models
-
+from datetime import date
 # Create your models here.
-class Quiz(models.Model):
-    topic = models.TextField()
-    score = models.IntegerField()
-    def __str__(self):
-        return self.topic
 
 class Question(models.Model):
-    q = models.TextField()
-    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-    score = models.IntegerField()
-    count = models.IntegerField()
+    q = models.TextField(default='')
+    timesViewed = models.IntegerField(default=0)
+    lastJump = models.IntegerField(default=0)
+    lastViewed = models.DateField(auto_now_add=True)
+    right_answer = models.TextField(default='')
+    wrong_answer1 = models.TextField(default='')
+    wrong_answer2 = models.TextField(default='')
+    wrong_answer3 = models.TextField(default='')
+
     def __str__(self):
         return self.q
-
-class Answer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    answer = models.TextField()
-    explanation = models.TextField()
-    def __str__(self):
-        return self.answer

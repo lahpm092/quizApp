@@ -19,9 +19,9 @@
 <form action="/quiz_page/" method="post">
   {% csrf_token %}
     <select name="selected_quiz">
-      {% for quiz in quizzes %}
-      <option>{{ quiz.topic }}</option>
-      {% endfor %}
+      <!-- {% for quiz in quizzes %} -->
+      <!-- <option>{{ quiz.topic }}</option>
+      {% endfor %} -->
     </select>
     <input type="number" name="no. of questions" min="1" max="100">
     <input type="submit" value="OK">

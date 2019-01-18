@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Questions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript">
+    </script>
+    <script  type="text/javascript">
+      function setUp() {
+        var question = '{{ question }}'
+        var right = '{{ right_answer }}'
+        var wrong1 = '{{ wrong_answer1 }}'
+        var wrong2 = '{{ wrong_answer2 }}'
+        var wrong3 = '{{ wrong_answer3 }}'
+        document.getElementById("Question").innerHTML=question
+        document.getElementById("right").innerText=right
+        document.getElementById("wrong1").innerText=wrong1
+        document.getElementById("wrong2").innerText=wrong2
+        document.getElementById("wrong3").innerText=wrong3
+      }
+
+      function rightFunction() {
+        document.getElementById("right").style.backgroundColor="green"
+        document.getElementById("wrong1").style.backgroundColor="red"
+        document.getElementById("wrong2").style.backgroundColor="red"
+        document.getElementById("wrong3").style.backgroundColor="red"
+        $.ajax({
+          url: '/hitOrMiss/',
+          data: {
+            'hitOrMiss': true
+          },
+          dataType: 'json',
+          success: function (data) {
+            document.getElementById("Question").innerHTML=data.question
+            document.getElementById("right").innerText=data.right
+            document.getElementById("wrong1").innerText=data.wrong1
+            document.getElementById("wrong2").innerText=data.wrong2
+            document.getElementById("wrong3").innerText=data.wrong3
+          }
+        });
+      }
+
+      function wrongFunction() {
+        document.getElementById("right").style.backgroundColor="green"
+        document.getElementById("wrong1").style.backgroundColor="red"
+        document.getElementById("wrong2").style.backgroundColor="red"
+        document.getElementById("wrong3").style.backgroundColor="red"
+        $.ajax({
+          url: '/hitOrMiss/',
+          data: {
+            'hitOrMiss': false
+          },
+          dataType: 'json',
+          success: function (data) {
+            document.getElementById("Question").innerHTML=data.question
+            document.getElementById("right").innerText=data.right
+            document.getElementById("wrong1").innerText=data.wrong1
+            document.getElementById("wrong2").innerText=data.wrong2
+            document.getElementById("wrong3").innerText=data.wrong3
+          }
+        });
+      }
+
+    </script>
+  </head>
+  <body>
+    <h1 id="Question"></h1>
+
+    <button type="button" onclick="rightFunction()" id="right" name="right_answer_button"></button>
+    <button type="button" onclick="wrongFunction()" id="wrong1" name="wrong_answer1_button"></button>
+    <button type="button" onclick="wrongFunction()" id="wrong2" name="wrong_answer2_button"></button>
+    <button type="button" onclick="wrongFunction()" id="wrong3" name="wrong_answer3_button"></button>
+
+    <button type="button" onclick="setUp()" name="button">Start</button>
+  </body>
+</html>

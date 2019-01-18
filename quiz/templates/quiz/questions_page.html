@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/questions_save/" method='post'>
+      {% csrf_token %}
+      <label for="Question">Enter Question: </label>
+      <input id="question" type="text" name="question_field" value="">
+      <label for="correctAnswer">Enter Correct Answer: </label>
+      <input id="correctAnswer" type="text" name="correctAnswer_field" value="">
+      <label for="incorrectAnswer1">Enter Incorrect Answer 1: </label>
+      <input id="inCorrectAnswer1" type="text" name="incorrectAnswer1_field" value="">
+      <label for="incorrectAnswer2">Enter Incorrect Answer 2: </label>
+      <input id="inCorrectAnswer2" type="text" name="incorrectAnswer2_field" value="">
+      <label for="incorrectAnswer3">Enter Incorrect Answer 3: </label>
+      <input id="inCorrectAnswer3" type="text" name="incorrectAnswer3_field" value="">
+      <input type='submit' value='submit'>
+    </form>
+  </body>
+</html>
