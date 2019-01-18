@@ -27,15 +27,16 @@
         $.ajax({
           url: '/hitOrMiss/',
           data: {
-            'hitOrMiss': true
+            'hitOrMiss': '1',
           },
           dataType: 'json',
           success: function (data) {
-            document.getElementById("Question").innerHTML=data.question
-            document.getElementById("right").innerText=data.right
-            document.getElementById("wrong1").innerText=data.wrong1
-            document.getElementById("wrong2").innerText=data.wrong2
-            document.getElementById("wrong3").innerText=data.wrong3
+            // document.getElementById("Question").innerHTML=data.question
+            // document.getElementById("right").innerText=data.right
+            // document.getElementById("wrong1").innerText=data.wrong1
+            // document.getElementById("wrong2").innerText=data.wrong2
+            // document.getElementById("wrong3").innerText=data.wrong3
+            console.log(data.test)
           }
         });
       }
@@ -48,15 +49,16 @@
         $.ajax({
           url: '/hitOrMiss/',
           data: {
-            'hitOrMiss': false
+            'hitOrMiss': '0'
           },
           dataType: 'json',
           success: function (data) {
-            document.getElementById("Question").innerHTML=data.question
-            document.getElementById("right").innerText=data.right
-            document.getElementById("wrong1").innerText=data.wrong1
-            document.getElementById("wrong2").innerText=data.wrong2
-            document.getElementById("wrong3").innerText=data.wrong3
+            // document.getElementById("Question").innerHTML=data.question
+            // document.getElementById("right").innerText=data.right
+            // document.getElementById("wrong1").innerText=data.wrong1
+            // document.getElementById("wrong2").innerText=data.wrong2
+            // document.getElementById("wrong3").innerText=data.wrong3
+            console.log(data.test)
           }
         });
       }

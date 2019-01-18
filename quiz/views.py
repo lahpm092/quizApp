@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template import RequestContext
 # Create your views here.
 # from .forms import multipleChoice
@@ -44,3 +44,17 @@ def display_questions(request):
         'wrong_answer3': theQuestion.wrong_answer3,
     }
     return render(request, 'quiz/display_questions.html', context)
+
+def hitOrMiss(request):
+    right_or_not = request.GET.get('hitOrMiss', None)
+    if right_or_not == '1':
+        test = "true"
+    elif right_or_not == '0':
+        test = "false"
+    else:
+        test = "get problem"
+    context = {
+        'test': test
+    }
+
+    return JsonResponse(context)
